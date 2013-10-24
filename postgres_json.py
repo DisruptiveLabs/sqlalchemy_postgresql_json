@@ -12,6 +12,7 @@ from sqlalchemy import util
 # best of both worlds
 from json import dumps as dumpjson
 
+
 from sqlalchemy.ext.mutable import MutableDict, Mutable
 
 
@@ -20,6 +21,31 @@ __all__ = ['JSON', 'json']
 #This requires the use of psycopg2 and postgresql afaik, it probably wont work with zxJDBC, and definitely won't with
 # py-postgresql or pg8000, but why would you use those anyway?
 
+from decimal import Decimal
+from datetime import datetime
+
+def to_json(obj):
+    if isinstance(obj, Decimal):
+        return float(obj)
+    if isinstance(obj, datetime):
+        return {'__class__': 'datetime',
+                '__value__': obj.isoformat()}
+    raise TypeError(repr(obj) + ' is not JSON serializable')
+
+def from_json(obj):
+    if '__class__' in obj:
+        type = obj.get('__class__')
+        if type == 'Decimal':
+            return float(obj.get('__value__'))
+        elif type == 'datetime':
+            return datetime.strptime(obj.get('__value__'), '%Y-%m-%dT%H:%M:%S.%fZ')
+    return obj
+
+from psycopg2._json import register_default_json
+from functools import partial
+from json import loads
+
+register_default_json(loads=partial(loads, object_hook=from_json))
 
 class JSON(sqltypes.Concatenable, sqltypes.TypeEngine):
     """Represents the Postgresql JSON type.
@@ -55,14 +81,14 @@ class JSON(sqltypes.Concatenable, sqltypes.TypeEngine):
 
         def process(value):
             if value is not None:
-                return dumpjson(value)
+                return dumpjson(value, default=to_json)
             return value
 
         return process
 
     def result_processor(self, dialect, coltype):
+        #psycopg2 handles this for us, kinda thankfully
         return lambda v: v
-
 
 ischema_names['json'] = JSON
 

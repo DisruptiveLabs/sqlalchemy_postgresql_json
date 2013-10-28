@@ -9,7 +9,7 @@ setup(
     name='sqlalchemy_postgresql_json',
     version=get_git_version(),
     long_description=__doc__,
-    py_modules=['postgres_json'],
+    packages=find_packages(),
     include_package_data=True,
     scripts=['git_version.py'],
     zip_safe=False,

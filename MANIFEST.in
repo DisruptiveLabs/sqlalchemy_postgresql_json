@@ -1,3 +1,4 @@
 include git_version.py
 include RELEASE-VERSION
 include postgres_json.py
+include sqlalchemy_postgresql_json

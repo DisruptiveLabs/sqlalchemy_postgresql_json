@@ -11,5 +11,6 @@ setup(
     long_description=__doc__,
     packages=find_packages(),
     include_package_data=True,
+    scripts=['git_version.py'],
     zip_safe=False,
     install_requires=['psycopg2', 'sqlalchemy'])

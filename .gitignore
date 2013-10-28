@@ -34,3 +34,13 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+venv
+.venv
+.idea
+
+*.sublime-project
+/*.sublime-workspace
+.vagrant
+RELEASE-VERSION
+

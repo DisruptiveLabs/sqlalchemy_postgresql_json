@@ -9,8 +9,8 @@ setup(
     name='sqlalchemy_postgresql_json',
     version=get_git_version(),
     long_description=__doc__,
-    packages=find_packages(),
+    py_modules=['postgres_json'],
     include_package_data=True,
-    scripts=['git_version.py', 'postgres_json.py'],
+    scripts=['git_version.py'],
     zip_safe=False,
     install_requires=['psycopg2', 'sqlalchemy'])

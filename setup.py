@@ -3,11 +3,11 @@
 """
 
 from setuptools import setup, find_packages
-from git_version import get_git_version
+from sqlalchemy_postgresql_json import __version__
 
 setup(
     name='sqlalchemy-postgresql-json',
-    version=get_git_version(),
+    version=".".join(map(str, __version__)),
     long_description=__doc__,
     packages=find_packages(),
     include_package_data=True,

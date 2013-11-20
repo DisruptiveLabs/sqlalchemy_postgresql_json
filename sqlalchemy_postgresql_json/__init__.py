@@ -1,3 +1,5 @@
+__version__ = (0, 3, 3)
+
 import collections
 
 from sqlalchemy.dialects import postgresql
@@ -15,8 +17,6 @@ from json import dumps as dumpjson
 
 from sqlalchemy.ext.mutable import MutableDict, Mutable
 
-
-__all__ = ['JSON', 'json']
 
 #This requires the use of psycopg2 and postgresql afaik, it probably wont work with zxJDBC, and definitely won't with
 # py-postgresql or pg8000, but why would you use those anyway?

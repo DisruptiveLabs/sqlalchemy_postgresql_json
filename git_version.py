@@ -80,7 +80,6 @@ def get_git_version(abbrev=4):
 
     #adapt to PEP 386 compatible versioning scheme
     version = pep386adapt(version)
-
     # If that doesn't work, fall back on the value that's in
     # RELEASE-VERSION.
 
@@ -110,6 +109,7 @@ def pep386adapt(version):
         parts[-2] = 'post'+parts[-2]
         version = '.'.join(parts[:-1])
         return version
+    return version
 
 
 if __name__ == "__main__":

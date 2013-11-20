@@ -1,4 +1,4 @@
-""" sqlalchemy-postgresql-json
+""" sqlalchemy_postgresql_json
 	Adds JSON support to SQLAlchemy, with magic helpers to keep things mutable
 """
 
@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 from git_version import get_git_version
 
 setup(
-    name='sqlalchemy_postgresql_json',
+    name='sqlalchemy-postgresql-json',
     version=get_git_version(),
     long_description=__doc__,
     packages=find_packages(),

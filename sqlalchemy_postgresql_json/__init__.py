@@ -1,5 +1,3 @@
-__version__ = (0, 3, 3)
-
 import collections
 
 from sqlalchemy.dialects import postgresql

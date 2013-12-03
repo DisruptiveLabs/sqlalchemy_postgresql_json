@@ -63,6 +63,6 @@ ischema_names['ltree'] = LTREE
 ischema_names['lquery'] = LQUERY
 ischema_names['ltxtquery'] = LTXTQUERY
 
-PGTypeCompiler.visit_LTREE = lambda type_: 'LTREE'
-PGTypeCompiler.visit_LQUERY = lambda type_: 'LQUERY'
-PGTypeCompiler.visit_LTXTQUERY = lambda type_: 'LTXTQUERY'
+PGTypeCompiler.visit_LTREE = lambda self, type_: 'LTREE'
+PGTypeCompiler.visit_LQUERY = lambda self, type_: 'LQUERY'
+PGTypeCompiler.visit_LTXTQUERY = lambda self, type_: 'LTXTQUERY'

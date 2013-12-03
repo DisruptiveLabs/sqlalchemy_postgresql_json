@@ -10,4 +10,6 @@ __all__ = ['monkey_patch_array',
            'JSON',
            'LTXTQUERY',
            'LTREE',
-           'LQUERY']
+           'LQUERY',
+           'MutableList',
+           'MutableDict']

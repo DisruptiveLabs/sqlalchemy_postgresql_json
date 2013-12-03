@@ -132,4 +132,6 @@ __all__ = ['monkey_patch_array',
            'monkey_patch_json',
            'monkey_patch_all',
            'JSONMutableDict',
-           'JSONMutableList']
+           'JSONMutableList',
+           'MutableList',
+           'MutableDict']

@@ -7,7 +7,7 @@ from sqlalchemy import util
 from psycopg2._json import register_default_json
 from functools import partial
 from datetime import datetime
-import json, sys
+import json as _json, sys
 
 try:
     import cdecimal as decimal
@@ -35,7 +35,7 @@ def from_json(obj):
             return datetime.strptime(obj.get('__value__'), '%Y-%m-%dT%H:%M:%S.%fZ')
     return obj
 
-register_default_json(loads=partial(json.loads, object_hook=from_json))
+register_default_json(loads=partial(_json.loads, object_hook=from_json))
 
 class JSON(sqltypes.Concatenable, sqltypes.TypeEngine):
     """Represents the PostgreSQL JSON type.
@@ -71,7 +71,7 @@ class JSON(sqltypes.Concatenable, sqltypes.TypeEngine):
 
         def process(value):
             if value is not None:
-                return json.dumps(value, default=to_json)
+                return _json.dumps(value, default=to_json)
             return value
 
         return process

@@ -38,6 +38,11 @@ class JSONMutableDict(MutableDict):
         else:
             return value
 
+    def update(self, *args, **kwargs):
+        super(MutableDict, self).update(*args, **kwargs)
+        self.changed()
+
+
 
 class MutableList(Mutable, list):
     def __setitem__(self, key, value):

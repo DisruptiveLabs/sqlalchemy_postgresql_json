@@ -89,6 +89,13 @@ class MutableList(Mutable, list):
             return Mutable.coerce(key, value)
         return value
 
+    def __getstate__(self):
+        return list(self)
+    
+    def __setstate__(self, state):
+        for i in state:
+            self.append(i)
+
 
 class JSONMutableList(MutableList):
     def __setitem__(self, key, value):

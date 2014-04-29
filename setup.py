@@ -7,6 +7,10 @@ from setuptools import setup, find_packages
 
 setup(
     name='sqlalchemy-postgresql-json',
+    author="Franklyn Tackitt",
+    author_email="franklyn@tackitt.net",
+    url="https://github.com/DisruptiveLabs/sqlalchemy_postgresql_json",
+    download_url="https://github.com/DisruptiveLabs/sqlalchemy_postgresql_json/tarball/0.4.3",
     version="0.4.3",
     long_description=__doc__,
     packages=find_packages(),

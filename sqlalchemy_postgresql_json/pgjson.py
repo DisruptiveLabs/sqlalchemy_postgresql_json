@@ -35,7 +35,17 @@ def from_json(obj):
             return datetime.strptime(obj.get('__value__'), '%Y-%m-%dT%H:%M:%S.%fZ')
     return obj
 
+_loads = partial(_json.loads, object_hook=to_json)
+_dumps = partial(_json.dumps, default=from_json)
+
 register_default_json(loads=partial(_json.loads, object_hook=from_json))
+
+def register_json(loads=None, dumps=None):
+    if loads:
+        globals()['_loads'] = loads
+        register_default_json(loads=loads)
+    if dumps:
+        globals()['_dumps'] = dumps
 
 class JSON(sqltypes.Concatenable, sqltypes.TypeEngine):
     """Represents the PostgreSQL JSON type.
@@ -71,7 +81,7 @@ class JSON(sqltypes.Concatenable, sqltypes.TypeEngine):
 
         def process(value):
             if value is not None:
-                return _json.dumps(value, default=to_json)
+                return _dumps(value)
             return value
 
         return process
@@ -89,4 +99,4 @@ class json(sqlfunc.GenericFunction):
 
 PGTypeCompiler.visit_JSON = lambda self, type_: 'JSON'
 
-__all__ = ['JSON', 'json']
+__all__ = ['JSON', 'json', 'register_json']

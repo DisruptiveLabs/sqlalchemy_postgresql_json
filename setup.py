@@ -12,6 +12,7 @@ setup(
     url="https://github.com/DisruptiveLabs/sqlalchemy_postgresql_json",
     download_url="https://github.com/DisruptiveLabs/sqlalchemy_postgresql_json/tarball/0.4.4",
     version="0.4.4",
+    description="Postgresql JSON Extension for sqlalchemy",
     long_description=__doc__,
     packages=find_packages(),
     include_package_data=True,

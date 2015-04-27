@@ -34,6 +34,8 @@ class JSONMutableDict(MutableDict):
         if not isinstance(value, JSONMutableDict):
             if isinstance(value, dict):
                 return JSONMutableDict(value)
+            if isinstance(value, (list, tuple, set)):
+                return JSONMutableList(value)
             return Mutable.coerce(key, value)
         else:
             return value

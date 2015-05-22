@@ -2,6 +2,7 @@ from sqlalchemy.dialects.postgresql.base import ischema_names, PGTypeCompiler, A
 from sqlalchemy import types as sqltypes
 from sqlalchemy.sql import expression
 
+
 class LTREE(sqltypes.Concatenable, sqltypes.TypeEngine):
     """Postgresql LTREE type.
 
@@ -59,10 +60,24 @@ class LTXTQUERY(sqltypes.TypeEngine):
     """
     __visit_name__ = 'LTXTQUERY'
 
+
 ischema_names['ltree'] = LTREE
 ischema_names['lquery'] = LQUERY
 ischema_names['ltxtquery'] = LTXTQUERY
 
-PGTypeCompiler.visit_LTREE = lambda self, type_: 'LTREE'
-PGTypeCompiler.visit_LQUERY = lambda self, type_: 'LQUERY'
-PGTypeCompiler.visit_LTXTQUERY = lambda self, type_: 'LTXTQUERY'
+
+def visit_LTREE(self, type_, **kw):
+    return 'LTREE'
+
+
+def visit_LQUERY(self, type_, **kw):
+    return 'LQUERY'
+
+
+def visit_LTXTQUERY(self, type_, **kw):
+    return 'LTXTQUERY'
+
+
+PGTypeCompiler.visit_LTREE = visit_LTREE
+PGTypeCompiler.visit_LQUERY = visit_LQUERY
+PGTypeCompiler.visit_LTXTQUERY = visit_LTXTQUERY

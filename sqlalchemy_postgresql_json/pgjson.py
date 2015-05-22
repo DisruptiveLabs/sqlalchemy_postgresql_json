@@ -97,6 +97,9 @@ class json(sqlfunc.GenericFunction):
     type = JSON
     name = 'to_json'
 
-PGTypeCompiler.visit_JSON = lambda self, type_: 'JSON'
+def visit_JSON(self, type_, **kw):
+    return 'JSON'
+
+PGTypeCompiler.visit_JSON = visit_JSON
 
 __all__ = ['JSON', 'json', 'register_json']

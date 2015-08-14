@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import collections
 from sqlalchemy.ext.mutable import MutableDict, Mutable
 from pgjson import JSON

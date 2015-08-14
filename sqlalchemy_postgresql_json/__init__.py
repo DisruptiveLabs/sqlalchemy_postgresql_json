@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from pgjson import *
 from ltree import *
 from mutable import *

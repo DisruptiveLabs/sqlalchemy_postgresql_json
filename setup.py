@@ -6,7 +6,7 @@ And now adds LTREE support as well
 
 from setuptools import setup, find_packages
 
-VERSION = (0, 4, 6)
+VERSION = (0, 4, 7)
 VERSION_STRING = ".".join(map(str, VERSION))
 
 setup(name='sqlalchemy-postgresql-json',

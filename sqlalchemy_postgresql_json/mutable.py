@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 import collections
 from sqlalchemy.ext.mutable import MutableDict, Mutable
-from pgjson import JSON
+from sqlalchemy_postgresql_json.pgjson import JSON
 from sqlalchemy.dialects import postgresql
 
 class JSONMutableDict(MutableDict):

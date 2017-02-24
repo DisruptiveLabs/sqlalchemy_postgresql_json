@@ -6,7 +6,7 @@ And now adds LTREE support as well
 
 from setuptools import setup, find_packages
 
-VERSION = (0, 4, 7)
+VERSION = (0, 5, 0)
 VERSION_STRING = ".".join(map(str, VERSION))
 
 setup(name='sqlalchemy-postgresql-json',
@@ -20,4 +20,7 @@ setup(name='sqlalchemy-postgresql-json',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
-      install_requires=['psycopg2', 'sqlalchemy'])
+      install_requires=[
+          'psycopg2',
+          'sqlalchemy>=1.1'
+      ])

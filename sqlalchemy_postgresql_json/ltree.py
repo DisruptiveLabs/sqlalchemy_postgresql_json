@@ -1,6 +1,7 @@
 from __future__ import absolute_import 
 
-from sqlalchemy.dialects.postgresql.base import ischema_names, PGTypeCompiler, ARRAY
+from sqlalchemy.dialects.postgresql import ARRAY
+from sqlalchemy.dialects.postgresql.base import ischema_names, PGTypeCompiler
 from sqlalchemy import types as sqltypes
 from sqlalchemy.sql import expression
 
